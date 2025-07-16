@@ -122,7 +122,7 @@ win = tk.Tk()
 win.title('In-situ Spectra')
 win.geometry('380x450')      # 改高一點以容納新欄位
 win.resizable(False, False)
-win.iconbitmap('C:/Users/user/iCloudDrive/NSYSU/tool/In-situ Spectra with GUI/ICON.jpg')
+win.iconbitmap('A icon route')
 
 # Label 區
 tk.Label(win, text="請選取資料夾",            bg="grey", fg="white", height=1).place(x=0,   y=0)
