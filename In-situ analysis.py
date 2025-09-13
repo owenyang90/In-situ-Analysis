@@ -8,7 +8,7 @@ import re
 import glob
 import numpy as np
 import pandas as pd
-
+import sys
 # === 以下是原本的處理函式 ===
 
 def extract_timestamp_ms(filepath):
@@ -116,13 +116,20 @@ def process_data():
     else:
         messagebox.showinfo("完成", f"已將結果儲存到\n{output_excel}")
         os.system(r'start excel.exe ' + output_excel)
-
+# icon issue fix
+def resource_path(relative_path):
+    try:
+        base_path=sys._MEIPASS
+    except Exception:
+        base_path=os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 # 建立主視窗
 win = tk.Tk()
-win.title('In-situ Spectra')
+win.title('Snake')
 win.geometry('380x450')      # 改高一點以容納新欄位
 win.resizable(False, False)
-win.iconbitmap('A icon route')
+icon_path = resource_path('icon.ico')
+win.iconbitmap(icon_path)
 
 # Label 區
 tk.Label(win, text="請選取資料夾",            bg="grey", fg="white", height=1).place(x=0,   y=0)
@@ -131,8 +138,8 @@ tk.Label(win, text="請輸入結束波長 (nm)",      fg="red",  height=1).place
 tk.Label(win, text="請輸入起始時間 (秒)",      fg="green",height=1).place(x=0,   y=190)  # ← 新增
 
 # Entry 區
-loadFile_en  = tk.Entry(win, width=40)
-loadFile_en.place(x=70,  y=0)
+loadFile_en  = tk.Entry(win, width=35)
+loadFile_en.place(x=80,  y=0)
 entry1= tk.Entry(win, width=10)
 entry1.place(x=120, y=50)
 entry1.insert(0, "400")
